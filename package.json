@@ -9,6 +9,7 @@
     "start": "ts-node-dev ./src/index.ts",
     "start:prod": "npm run build && node ./dist/index.js",
     "build": "tsc",
+    "seed:student": "ts-node-dev ./src/seeds/Student.seed.ts --ignore-watch",
     "seed:authors": "node ./dist/seeds/author.seed.js",
     "seed:books": "node ./dist/seeds/book.seed.js",
     "seed:book-relations": "node ./dist/seeds/book-relations.seed.js",
@@ -33,6 +34,8 @@
     "mongoose": "^7.2.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.16",
     "validator": "^13.9.0"
   },
   "devDependencies": {

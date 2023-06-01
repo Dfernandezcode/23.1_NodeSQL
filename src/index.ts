@@ -1,5 +1,5 @@
 import { companiesRouter } from "./routes/companies.routes";
-
+import { AppDataSource } from "./databases/typeorm-datasource";
 import { type Request, type Response, type NextFunction, type ErrorRequestHandler } from "express";
 
 import express from "express";
@@ -11,7 +11,7 @@ const main = async (): Promise<void> => {
   // Conexión a la BBDD
   const mongoDatabase = await mongoConnect();
   const sqlDatabase = await sqlConnect();
-
+  const datasource = await AppDataSource.initialize();
   // Configuración del server
   const PORT = 3000;
   const app = express();
@@ -31,7 +31,8 @@ const main = async (): Promise<void> => {
       <h3>API homepage</h3>
       <p>We are using the DB of ${mongoDatabase?.connection?.name as string}</p>
       <p>We are using the DB of ${sqlDatabase?.config?.database as string} of the host ${sqlDatabase?.config.host as string}</p>
-    `);
+      <p>We are using TypeORM with the DB of: ${datasource.options.database as string}</p>
+      `);
   });
 
   router.get("*", (req: Request, res: Response) => {
