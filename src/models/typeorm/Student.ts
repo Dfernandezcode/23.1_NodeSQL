@@ -4,11 +4,11 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn()
-  id: number | undefined; // primary columns
+  id!: number; // primary columns
 
   @Column()
-  firstName: string | undefined;
+  firstName!: string;
 
   @Column()
-  lastName: string | undefined;
+  lastName!: string;
 }

@@ -1,4 +1,5 @@
 import { companiesRouter } from "./routes/companies.routes";
+import { studentsRouter } from "./routes/students.routes";
 import { AppDataSource } from "./databases/typeorm-datasource";
 import { type Request, type Response, type NextFunction, type ErrorRequestHandler } from "express";
 
@@ -48,6 +49,7 @@ const main = async (): Promise<void> => {
 
   // Usamos las rutas
   app.use("/companies", companiesRouter);
+  app.use("/students", studentsRouter);
   app.use("/public", express.static("public"));
   app.use("/", router);
 
